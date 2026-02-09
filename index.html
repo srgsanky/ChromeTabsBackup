@@ -1,11 +1,69 @@
 <html>
+  <head>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 12px;
+        min-width: 320px;
+      }
+
+      .row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .section {
+        margin-top: 12px;
+      }
+
+      .section-title {
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #444;
+      }
+
+      button {
+        padding: 6px 10px;
+      }
+
+      label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+    </style>
+  </head>
   <body>
-    <button id="export-md">Export Markdown</button>
-    <button id="export-json">Export JSON</button>
-    <label>
-      Import JSON
-      <input id="import-json" type="file" accept="application/json" />
-    </label>
+    <div class="section">
+      <div class="section-title">Markdown</div>
+      <div class="row">
+        <button id="export-md">Export Markdown</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Danger Zone</div>
+      <div class="row">
+        <button id="close-all-tabs">Close All Tabs</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">JSON</div>
+      <div class="row">
+        <button id="export-json">Export JSON</button>
+      </div>
+      <div class="row" style="margin-top: 6px;">
+        <label>
+          Import JSON
+          <input id="import-json" type="file" accept="application/json" />
+        </label>
+      </div>
+    </div>
+
     <pre id="output"></pre>
   </body>
 

@@ -332,6 +332,21 @@ exportMarkdownButton.addEventListener('click', async () => {
     }
 });
 
+const closeAllTabsButton = document.getElementById('close-all-tabs');
+closeAllTabsButton.addEventListener('click', async () => {
+    try {
+        const confirmed = window.confirm('Close all tabs in all windows? This cannot be undone.');
+        if (!confirmed) return;
+        const tabs = await tabsQuery({});
+        const tabIds = tabs.map((tab) => tab.id).filter((id) => typeof id === 'number');
+        if (tabIds.length === 0) return;
+        chrome.tabs.remove(tabIds);
+        document.getElementById('output').innerText = `Closed ${tabIds.length} tabs.`;
+    } catch (error) {
+        document.getElementById('output').innerText = `Error: ${error.message}`;
+    }
+});
+
 const exportJsonButton = document.getElementById('export-json');
 exportJsonButton.addEventListener('click', async () => {
     try {
