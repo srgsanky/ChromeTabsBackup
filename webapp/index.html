@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tab Organizer</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-mark">Tabs</div>
+        <div>
+      <div class="brand-title">Tab Organizer</div>
+        </div>
+      </div>
+      <div class="search-stack">
+        <input id="search-title" type="search" placeholder="Search title" />
+        <input id="search-url" type="search" placeholder="Search URL" />
+      </div>
+      <div class="controls">
+        <label class="file-input">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M10 3v9m0 0l3-3m-3 3l-3-3M4 14h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+            </svg>
+          </span>
+          Import JSON
+          <input id="import-json" type="file" accept="application/json" />
+        </label>
+        <button id="export-json" class="primary">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M10 17V8m0 0l3 3m-3-3L7 11M4 6h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+            </svg>
+          </span>
+          Export JSON
+        </button>
+        <button id="toggle-duplicates" class="ghost">Show Duplicates</button>
+        <div class="divider" aria-hidden="true">|</div>
+        <div class="status-stack">
+          <button id="clear-autosave" class="danger">Clear LocalStorage</button>
+          <div id="status" class="status"></div>
+        </div>
+        <button id="theme-toggle" class="ghost icon-only" aria-label="Toggle Theme" title="Toggle Theme">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M10 3.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13z" stroke="currentColor" stroke-width="1.4" fill="none" />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="overall-count" class="count-banner"></section>
+      <section id="workspace" class="workspace"></section>
+    </main>
+
+    <div id="tooltip" class="tooltip-card" role="tooltip" aria-hidden="true">
+      <div class="tooltip-title"></div>
+      <div class="tooltip-url"></div>
+    </div>
+
+    <template id="window-template">
+      <div class="window">
+        <div class="window-header">
+          <div class="window-title"></div>
+          <div class="window-actions">
+            <button class="add-group">Add Group</button>
+            <button class="delete-window danger" aria-label="Delete Window" title="Delete Window">×</button>
+          </div>
+        </div>
+        <div class="groups"></div>
+      </div>
+    </template>
+
+    <template id="add-window-template">
+      <div class="window add-window">
+        <button class="add-window-button">+ New Window</button>
+      </div>
+    </template>
+
+    <template id="group-template">
+      <div class="group">
+        <div class="group-header">
+          <input class="group-title" />
+          <button class="delete-group danger" aria-label="Delete Group" title="Delete Group">×</button>
+        </div>
+        <div class="group-subheader">
+          <select class="group-color"></select>
+          <span class="count-chip"></span>
+        </div>
+        <div class="tabs" data-dropzone="tab-list"></div>
+      </div>
+    </template>
+
+    <template id="tab-template">
+      <div class="tab" draggable="true">
+        <div class="drag-handle" title="Drag to reorder"></div>
+        <div class="tab-main">
+          <div class="tab-title-row">
+            <img class="tab-favicon" alt="" />
+            <button class="tab-open"></button>
+          </div>
+          <div class="tab-url"></div>
+        </div>
+        <button class="tab-close">Close</button>
+      </div>
+    </template>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
