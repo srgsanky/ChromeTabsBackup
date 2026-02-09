@@ -1,9 +1,13 @@
 <html>
   <body>
-    <button>Show tabs</button>
+    <button id="export-md">Export Markdown</button>
+    <button id="export-json">Export JSON</button>
+    <label>
+      Import JSON
+      <input id="import-json" type="file" accept="application/json" />
+    </label>
     <pre id="output"></pre>
   </body>
 
   <script src="./logic.js" type="module"></script>
 </html>
-

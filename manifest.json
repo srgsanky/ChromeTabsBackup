@@ -8,6 +8,6 @@
     "default_icon": "icon.png"
   },
   "permissions": [
-    "tabs", "tabGroups"
+    "tabs", "tabGroups", "downloads", "windows"
   ]
 }
